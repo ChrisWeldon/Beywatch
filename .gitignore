@@ -2,6 +2,7 @@
 
 # dependencies
 api/node_modules
+api/routes/sql_config.json
 client/node_modules
 /.pnp
 .pnp.js
