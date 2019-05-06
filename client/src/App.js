@@ -38,7 +38,6 @@ class App extends Component {
       <div className="App">
         <div className="container-fluid">
           <header className="App-header row">
-            <img src={this.state.apiResponse} className="App-logo" alt="logo" />
           </header>
           <div className="container-body row">
           <form className="col-md-12" onSubmit={this.handleSubmit}>
@@ -75,7 +74,7 @@ class App extends Component {
                 </div>
               </div>
               <div className="row justify-content-center">
-                <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+                <button type="submit" class="btn btn-primary" value="Submit">Submit <img src={this.state.apiResponse} className="App-logo" alt="logo" /></button>
               </div>
             </form>
           </div>
