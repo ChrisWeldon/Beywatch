@@ -18,18 +18,32 @@ class App extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const formdata = new FormData(event.target);
-    var data  = {}
+    var ret_data = {}
+    const data = new FormData(event.target);
+    //
+    // for (let name of data.keys()) {
+    //   for (let name of data.keys()) {
+    //     const input = form.elements[name];
+    //     const parserName = input.dataset.parse;
+    //
+    //     if (parserName) {
+    //       const parser = inputParsers[parserName];
+    //       const parsedValue = parser(data.get(name));
+    //       data.set(name, parsedValue);
+    //     }
+    //   }
+    // }
 
-    for (var [key, value] of formdata.entries()) {
-      data[key] = value
-      // console.log(key, value);
+    for(var pair of data.entries()) {
+      ret_data[pair[0]] = pair[1]
     }
-    console.log(data)
+
+    console.log(ret_data)
 
     fetch('http://localhost:9000/match/', {
       method: 'POST',
-      body: data,
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(ret_data)
     });
   }
 
@@ -40,7 +54,7 @@ class App extends Component {
           <header className="App-header row">
           </header>
           <div className="container-body row">
-          <form className="col-md-12" onSubmit={this.handleSubmit}>
+          <form className="col-md-12" method="post" onSubmit={this.handleSubmit}>
             <div className="row">
               <div className="col-md-6">
                   <h3>Beyblade 1</h3>
