@@ -5,7 +5,6 @@ import './App.css';
 class App extends Component {
   constructor(props){
     super(props);
-    this.renderPart("Forge Disc", "O", "fd1")
     this.state = {
                   apiResponse: "",
                   el1:{
@@ -70,6 +69,7 @@ class App extends Component {
     let val = event.target.value;
     let type;
     let name = event.target.name;
+
     if(name.includes("el")){
       type = "Energy Layer";
     } else if(name.includes("fd")){
@@ -79,7 +79,6 @@ class App extends Component {
     }
 
     let id = event.target.id
-    console.log(val, type, id)
     fetch('http://localhost:9000/api/part', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -87,13 +86,18 @@ class App extends Component {
     }).then(res => res.json())
     .then(res => {
       console.log(res)
-      let obj = {};
-      obj[id] = val;
-      obj[name] = res[0]
-      this.setState(obj)
+      if(res.length ==0 ){
+        console.log("sql query empty")
+        let obj = {};
+        obj[id] = val;
+        this.setState(obj);
+      }else{
+        let obj = {};
+        obj[id] = val;
+        obj[name] = res[0]
+        this.setState(obj)
+      }
     });
-    // obj[id] = val
-    // this.setState(obj)
   }
 
 
@@ -124,7 +128,7 @@ class App extends Component {
                   <h3>Beyblade 1</h3>
                   <div className="form-group align-items-center form-row">
                     <div className="col-8">
-                      <input value={this.state.el1Input} onChange={this.handleChange} id="el1Input" class="form-control" aria-describedby="el1" placeholder="Energy Layer Id" name="el1"/>
+                      <input value={this.state.el1Input} onChange={this.handleChange} id="el1Input" class="form-control" aria-describedby="el1" placeholder="Energy Layer Name" name="el1"/>
                     </div>
                     <div className="col-4">
                       <img src={this.state.el1.img_url} className="partShow" alt="el1" />
@@ -132,7 +136,7 @@ class App extends Component {
                   </div>
                   <div className="form-group align-items-center form-row">
                     <div className="col-8">
-                      <input type="forge-disc" id="fd1" class="form-control" aria-describedby="fd1" placeholder="Forge Disc Id" name="fd1"/>
+                      <input value={this.state.fd1Input} onChange={this.handleChange} id="fd1Input" class="form-control" aria-describedby="fd1" placeholder="Forge Disc Name" name="fd1"/>
                     </div>
                     <div className="col-4">
                       <img src={this.state.fd1.img_url} className="partShow" alt="fd1" />
@@ -140,7 +144,7 @@ class App extends Component {
                   </div>
                   <div className="form-group align-items-center form-row">
                     <div className="col-8">
-                      <input type="performace-tip" id="pt1" class="form-control" aria-describedby="pt1" placeholder="Performance Tip Id" name="pt1"/>
+                      <input value={this.state.pt1Input} onChange={this.handleChange} id="pt1Input" class="form-control" aria-describedby="pt1" placeholder="Forge Disc Name" name="pt1"/>
                     </div>
                     <div className="col-4">
                       <img src={this.state.pt1.img_url} className="partShow" alt="pt1" />
@@ -154,7 +158,7 @@ class App extends Component {
                         <img src={this.state.el2.img_url} className="partShow" alt="el2" />
                       </div>
                       <div className="col-8">
-                        <input type="energy-layer" id="el2" class="form-control" aria-describedby="el2" placeholder="Energy Layer Id" name="el2"/>
+                        <input value={this.state.el2Input} onChange={this.handleChange} id="el2Input" class="form-control" aria-describedby="el2" placeholder="Energy Layer Name" name="el2"/>
                       </div>
                     </div>
                     <div className="form-group align-items-center form-row">
@@ -162,7 +166,7 @@ class App extends Component {
                         <img src={this.state.fd2.img_url} className="partShow" alt="fd2" />
                       </div>
                       <div className="col-8">
-                        <input type="forge-dics" id="fd2" class="form-control" aria-describedby="fd2" placeholder="Forge Disc Id" name="fd2"/>
+                        <input value={this.state.fd2Input} onChange={this.handleChange} id="fd2Input" class="form-control" aria-describedby="fd2" placeholder="Forge Disc Name" name="fd2"/>
                       </div>
                     </div>
                     <div className="form-group align-items-center form-row">
@@ -170,7 +174,7 @@ class App extends Component {
                         <img src={this.state.pt2.img_url} className="partShow" alt="pt2" />
                       </div>
                       <div className="col-8">
-                        <input type="performace-tip" id="pt2" class="form-control" aria-describedby="pt2" placeholder="Performance Tip Id" name="pt2"/>
+                        <input value={this.state.pt2Input} onChange={this.handleChange} id="pt2Input" class="form-control" aria-describedby="pt2" placeholder="Forge Disc Name" name="pt2"/>
                       </div>
                     </div>
                   </div>
