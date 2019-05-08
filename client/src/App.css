@@ -26,6 +26,11 @@
 .container-body{
   min-height: 80vh;
 }
+.partShow{
+  min-height: 50px; 
+  height: 10vh;
+  max-height: 80px;
+}
 
 @keyframes App-logo-spin {
   from {
