@@ -34,9 +34,13 @@
 
 .scrollable-menu {
     height: auto;
-    max-height: 60px;
+    max-height: 12vh;
     overflow-x: hidden;
     overflow-y: scroll;
+}
+
+.part-row{
+  min-height: 15vh;
 }
 
 @keyframes App-logo-spin {

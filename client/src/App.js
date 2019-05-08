@@ -161,7 +161,7 @@ class App extends Component {
     console.log(this.state[part+"Results"])
     let ret_array = []
     for(let i=0; i<this.state[part+"Results"].length;i++){
-      ret_array.push(<span><a id="el1Input" name="el1" className="btn" onClick={this.handleOptionClick}>{this.state[part+"Results"][i].name_hasbro}</a><br/></span>)
+      ret_array.push(<span><a id={part+"Input"} name={part} className="btn" onClick={this.handleOptionClick}>{this.state[part+"Results"][i].name_hasbro}</a><br/></span>)
     }
     return(
       ret_array
@@ -176,11 +176,11 @@ class App extends Component {
           <header className="App-header row">
           </header>
           <div className="container-body row">
-          <form className="col-md-12" method="post">
+          <form className="col-md-12">
             <div className="row">
               <div className="col-md-6">
                   <h3>Beyblade 1</h3>
-                  <div className="form-group align-items-center form-row">
+                  <div className="form-group align-items-center part-row form-row">
                     <div className="col-sm-4">
                       <input value={this.state.el1Input} onChange={this.handleChange} id="el1Input" class="form-control" aria-describedby="el1" placeholder="Energy Layer Name" name="el1"/>
                     </div>
@@ -193,17 +193,27 @@ class App extends Component {
                       <img src={this.state.el1.img_url} className="partShow" alt="el1" />
                     </div>
                   </div>
-                  <div className="form-group align-items-center form-row">
-                    <div className="col-8">
+                  <div className="form-group align-items-center part-row form-row">
+                    <div className="col-4">
                       <input value={this.state.fd1Input} onChange={this.handleChange} id="fd1Input" class="form-control" aria-describedby="fd1" placeholder="Forge Disc Name" name="fd1"/>
+                    </div>
+                    <div className="col-4">
+                      <div className="scrollable-menu">
+                        {this.returnQueriedMenuList("fd1")}
+                      </div>
                     </div>
                     <div className="col-4">
                       <img src={this.state.fd1.img_url} className="partShow" alt="fd1" />
                     </div>
                   </div>
-                  <div className="form-group align-items-center form-row">
-                    <div className="col-8">
-                      <input value={this.state.pt1Input} onChange={this.handleChange} id="pt1Input" class="form-control" aria-describedby="pt1" placeholder="Forge Disc Name" name="pt1"/>
+                  <div className="form-group align-items-center part-row form-row">
+                    <div className="col-4">
+                      <input value={this.state.pt1Input} onChange={this.handleChange} id="pt1Input" class="form-control" aria-describedby="pt1" placeholder="Performance Tip Name" name="pt1"/>
+                    </div>
+                    <div className="col-4">
+                      <div className="scrollable-menu">
+                        {this.returnQueriedMenuList("pt1")}
+                      </div>
                     </div>
                     <div className="col-4">
                       <img src={this.state.pt1.img_url} className="partShow" alt="pt1" />
@@ -218,28 +228,43 @@ class App extends Component {
                 </div>
                 <div className="col-md-6">
                     <h3>Beyblade 2</h3>
-                    <div className="form-group align-items-center form-row">
+                    <div className="form-group align-items-center part-row form-row">
                       <div className="col-4">
                         <img src={this.state.el2.img_url} className="partShow" alt="el2" />
                       </div>
-                      <div className="col-8">
+                      <div className="col-4">
+                        <div className="scrollable-menu">
+                          {this.returnQueriedMenuList("el2")}
+                        </div>
+                      </div>
+                      <div className="col-4">
                         <input value={this.state.el2Input} onChange={this.handleChange} id="el2Input" class="form-control" aria-describedby="el2" placeholder="Energy Layer Name" name="el2"/>
                       </div>
                     </div>
-                    <div className="form-group align-items-center form-row">
+                    <div className="form-group align-items-center part-row form-row">
                       <div className="col-4">
                         <img src={this.state.fd2.img_url} className="partShow" alt="fd2" />
                       </div>
-                      <div className="col-8">
+                      <div className="col-4">
+                        <div className="scrollable-menu">
+                          {this.returnQueriedMenuList("fd2")}
+                        </div>
+                      </div>
+                      <div className="col-4">
                         <input value={this.state.fd2Input} onChange={this.handleChange} id="fd2Input" class="form-control" aria-describedby="fd2" placeholder="Forge Disc Name" name="fd2"/>
                       </div>
                     </div>
-                    <div className="form-group align-items-center form-row">
+                    <div className="form-group align-items-center part-row form-row">
                       <div className="col-4">
                         <img src={this.state.pt2.img_url} className="partShow" alt="pt2" />
                       </div>
-                      <div className="col-8">
-                        <input value={this.state.pt2Input} onChange={this.handleChange} id="pt2Input" class="form-control" aria-describedby="pt2" placeholder="Forge Disc Name" name="pt2"/>
+                      <div className="col-4">
+                        <div className="scrollable-menu">
+                          {this.returnQueriedMenuList("pt2")}
+                        </div>
+                      </div>
+                      <div className="col-4">
+                        <input value={this.state.pt2Input} onChange={this.handleChange} id="pt2Input" class="form-control" aria-describedby="pt2" placeholder="Performace Tip Name" name="pt2"/>
                       </div>
                     </div>
                     <p>Attack: {this.state.el2.attack + this.state.fd2.attack + this.state.pt2.attack}&nbsp;
@@ -250,9 +275,6 @@ class App extends Component {
                     Burst: {this.state.el2.burst}</p>
                   </div>
                 </div>
-              <div className="row justify-content-center">
-                <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
-              </div>
             </form>
           </div>
         </div>
