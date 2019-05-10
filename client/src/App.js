@@ -57,7 +57,7 @@ class App extends Component {
 
     console.log(ret_data)
 
-    fetch('http://localhost:9000/api/', {
+    fetch('http://api.beybladematch.com/api/', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(ret_data)
@@ -85,7 +85,7 @@ class App extends Component {
     }
 
     let id = event.target.id
-    fetch('http://localhost:9000/api/part', {
+    fetch('http://api.beybladematch.com/api/part', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({part_type:type, query:val})
@@ -121,7 +121,7 @@ class App extends Component {
     }
 
     let id = event.target.id
-    fetch('http://localhost:9000/api/part', {
+    fetch('http://api.beybladematch.com/api/part', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({part_type:type, query:val})
@@ -145,7 +145,7 @@ class App extends Component {
 
 
   renderPart(pt, q, part){
-    fetch('http://localhost:9000/api/part', {
+    fetch('http://api.beybladematch.com/api/part', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({part_type:pt, query:q})
