@@ -64,5 +64,14 @@ router.get("/part/:part_type/:query", function(req, res, next){
   });
 });
 
+router.all("/part/all/", function(req, res, next){
+  con.query('SELECT * FROM beywatch.abstract_stats WHERE beywatch.abstract_stats.part_type="Energy Layer";' +
+  'SELECT * FROM beywatch.abstract_stats WHERE beywatch.abstract_stats.part_type="Forge Disc";' +
+  'SELECT * FROM beywatch.abstract_stats WHERE beywatch.abstract_stats.part_type="Performance Tip";', [1,3], function(error, results, fields){
+    if (error) throw error;
+    res.send(results)
+  })
+});
+
 
 module.exports = router;

@@ -5,6 +5,7 @@ import './App.css';
 class App extends Component {
   constructor(props){
     super(props);
+    this.api_server = "http://localhost:8080"
     this.state = {
                   el1:{
                     img_url : ""
@@ -37,14 +38,37 @@ class App extends Component {
   }
 
   componentDidMount(){
-      this.setState({
-        el1Input:"",
-        el2Input:"",
-        fd1Input:"",
-        fd2Input:"",
-        pt1Input:"",
-        pt2Input:""
-      })
+      fetch(this.api_server + '/api/part/all', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({})
+      }).then(res => res.json())
+      .then(res => {
+        if(res.length ==0 ){
+          console.log("sql query empty")
+        }else{
+          this.setState({
+            el1: res[0][0],
+            el1Results: res[0],
+            el2: res[0][0],
+            el2Results: res[0],
+            fd1: res[1][0],
+            fd1Results: res[1],
+            fd2: res[1][0],
+            fd2Results: res[1],
+            pt1: res[2][0],
+            pt1Results: res[2],
+            pt2: res[2][0],
+            pt2Results: res[2],
+            el1Input:"",
+            el2Input:"",
+            fd1Input:"",
+            fd2Input:"",
+            pt1Input:"",
+            pt2Input:""
+          })
+        }
+      });
   }
 
   handleSubmit(event) {
@@ -57,7 +81,7 @@ class App extends Component {
 
     console.log(ret_data)
 
-    fetch('http://api.beybladematch.com/api/', {
+    fetch(this.api_server+ '/api/', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(ret_data)
@@ -85,7 +109,7 @@ class App extends Component {
     }
 
     let id = event.target.id
-    fetch('http://api.beybladematch.com/api/part', {
+    fetch(this.api_server + '/api/part', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({part_type:type, query:val})
@@ -121,7 +145,7 @@ class App extends Component {
     }
 
     let id = event.target.id
-    fetch('http://api.beybladematch.com/api/part', {
+    fetch(this.api_server + '/api/part', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({part_type:type, query:val})
@@ -145,7 +169,7 @@ class App extends Component {
 
 
   renderPart(pt, q, part){
-    fetch('http://api.beybladematch.com/api/part', {
+    fetch('this.api_server/api/part', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({part_type:pt, query:q})
