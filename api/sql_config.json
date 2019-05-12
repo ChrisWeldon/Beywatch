@@ -1,0 +1,7 @@
+{
+  "host": "157.230.91.232",
+  "user": "chris",
+  "password": "Chris)98",
+  "port": 3306,
+  "multipleStatements":true
+}
