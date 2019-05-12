@@ -5,7 +5,7 @@ import './App.css';
 class App extends Component {
   constructor(props){
     super(props);
-    this.api_server = "http://localhost:8080"
+    this.api_server = "api.beybladematch.com"
     this.state = {
                   el1:{
                     img_url : ""
