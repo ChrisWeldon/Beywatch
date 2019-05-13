@@ -132,7 +132,7 @@ class MatchPredictor{
                       nat(el2.burst) + nat(fd2.burst) + nat(pt2.burst);
     return({
       pred: [bey1, bey2],
-      prob: [(bey1-bey2)/(bey1), (bey2-bey1)/(bey2) ]
+      prob: [Math.round((bey1)*1000/(bey1+bey2))/10, Math.round((bey2)*1000/(bey1+bey2))/10 ]
     })
   }
 

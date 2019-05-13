@@ -28,19 +28,23 @@
 }
 .partShow{
   min-height: 50px;
-  height: 10vh;
-  max-height: 80px;
+  height: 14vh;
+  max-height: 130px;
 }
 
 .scrollable-menu {
     height: auto;
     max-height: 12vh;
+    margin-right: 0px;
     overflow-x: hidden;
     overflow-y: scroll;
+    width: 150px;
 }
 
 .part-row{
-  min-height: 15vh;
+  min-height: 150px;
+  height: 13vh;
+  margin: 0;
 }
 
 @keyframes App-logo-spin {

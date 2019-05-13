@@ -2,6 +2,14 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+function  nat(val){
+  if(val<0){
+    return(0)
+  }else{
+    return(val)
+  }
+}
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -233,13 +241,13 @@ class App extends Component {
           <form className="col-md-12">
             <div className="row">
               <div className="col-md-6">
-                  {(this.state.model ? this.state.model.prob[0] : 0)}
+
                   <div className="form-group align-items-center part-row form-row">
-                    <div className="col-sm-4">
-                      <input value={this.state.el1Input} onChange={this.handleChange} id="el1Input" class="form-control" aria-describedby="el1" placeholder="Energy Layer Name" name="el1"/>
-                    </div>
                     <div className="col-4">
-                      <div className="scrollable-menu">
+                      <input value={this.state.el1Input} onChange={this.handleChange} id="el1Input" class="form-control form-control-lg" aria-describedby="el1" placeholder="Energy Layer Name" name="el1"/>
+                    </div>
+                    <div className="col-sm-4 scrollable-menu">
+                      <div className="">
                         {this.returnQueriedMenuList("el1")}
                       </div>
                     </div>
@@ -249,10 +257,10 @@ class App extends Component {
                   </div>
                   <div className="form-group align-items-center part-row form-row">
                     <div className="col-4">
-                      <input value={this.state.fd1Input} onChange={this.handleChange} id="fd1Input" class="form-control" aria-describedby="fd1" placeholder="Forge Disc Name" name="fd1"/>
+                      <input value={this.state.fd1Input} onChange={this.handleChange} id="fd1Input" class="form-control form-control-lg" aria-describedby="fd1" placeholder="Forge Disc Name" name="fd1"/>
                     </div>
-                    <div className="col-4">
-                      <div className="scrollable-menu">
+                    <div className="col-4 scrollable-menu">
+                      <div className="">
                         {this.returnQueriedMenuList("fd1")}
                       </div>
                     </div>
@@ -262,10 +270,10 @@ class App extends Component {
                   </div>
                   <div className="form-group align-items-center part-row form-row">
                     <div className="col-4">
-                      <input value={this.state.pt1Input} onChange={this.handleChange} id="pt1Input" class="form-control" aria-describedby="pt1" placeholder="Performance Tip Name" name="pt1"/>
+                      <input value={this.state.pt1Input} onChange={this.handleChange} id="pt1Input" class="form-control form-control-lg" aria-describedby="pt1" placeholder="Performance Tip Name" name="pt1"/>
                     </div>
-                    <div className="col-4">
-                      <div className="scrollable-menu">
+                    <div className="col-4 scrollable-menu">
+                      <div className="">
                         {this.returnQueriedMenuList("pt1")}
                       </div>
                     </div>
@@ -273,52 +281,52 @@ class App extends Component {
                       <img src={this.state.pt1.img_url} className="partShow" alt="pt1" />
                     </div>
                   </div>
-                  <p>Attack: {this.state.el1.attack + this.state.fd1.attack + this.state.pt1.attack}&nbsp;
-                  Defense: {this.state.el1.defense + this.state.fd1.defense + this.state.pt1.defense}&nbsp;
-                  Stamina: {this.state.el1.stamina + this.state.fd1.stamina + this.state.pt1.stamina}&nbsp;
-                  Weight: {this.state.el1.weight_stat + this.state.fd1.weight_stat + this.state.pt1.weight_stat}&nbsp;
-                  Speed: {this.state.el1.speed + this.state.fd1.speed + this.state.pt1.speed}&nbsp;
-                  Burst: {this.state.el1.burst}</p>
+                  <p>Attack: {nat(this.state.el1.attack) + nat(this.state.fd1.attack) + nat(this.state.pt1.attack)}&nbsp;
+                  Defense: {nat(this.state.el1.defense) + nat(this.state.fd1.defense) + nat(this.state.pt1.defense)}&nbsp;
+                  Stamina: {nat(this.state.el1.stamina) + nat(this.state.fd1.stamina) + nat(this.state.pt1.stamina)}&nbsp;
+                  Weight: {nat(this.state.el1.weight_stat) + nat(this.state.fd1.weight_stat) + nat(this.state.pt1.weight_stat)}&nbsp;
+                  Speed: {nat(this.state.el1.speed) + nat(this.state.fd1.speed) + nat(this.state.pt1.speed)}&nbsp;
+                  Burst: {nat(this.state.el1.burst)}</p>
+                  <h3>{(this.state.model ? this.state.model.prob[0] : 0)}%</h3>
                 </div>
                 <div className="col-md-6">
-                    {(this.state.model ? this.state.model.prob[1] : 0)}
                     <div className="form-group align-items-center part-row form-row">
-                      <div className="col-4">
+                      <div className="col-4 justify-content-center">
                         <img src={this.state.el2.img_url} className="partShow" alt="el2" />
                       </div>
-                      <div className="col-4">
-                        <div className="scrollable-menu">
+                      <div className="col-4 scrollable-menu justify-content-center">
+                        <div className="">
                           {this.returnQueriedMenuList("el2")}
                         </div>
                       </div>
-                      <div className="col-4">
-                        <input value={this.state.el2Input} onChange={this.handleChange} id="el2Input" class="form-control" aria-describedby="el2" placeholder="Energy Layer Name" name="el2"/>
+                      <div className="col-4 justify-content-center">
+                        <input value={this.state.el2Input} onChange={this.handleChange} id="el2Input" class="form-control form-control-lg" aria-describedby="el2" placeholder="Energy Layer Name" name="el2"/>
                       </div>
                     </div>
                     <div className="form-group align-items-center part-row form-row">
-                      <div className="col-4">
+                      <div className="col-4 justify-content-center">
                         <img src={this.state.fd2.img_url} className="partShow" alt="fd2" />
                       </div>
-                      <div className="col-4">
-                        <div className="scrollable-menu">
+                      <div className="col-4 scrollable-menu justify-content-center">
+                        <div className="">
                           {this.returnQueriedMenuList("fd2")}
                         </div>
                       </div>
-                      <div className="col-4">
-                        <input value={this.state.fd2Input} onChange={this.handleChange} id="fd2Input" class="form-control" aria-describedby="fd2" placeholder="Forge Disc Name" name="fd2"/>
+                      <div className="col-4 justify-content-center">
+                        <input value={this.state.fd2Input} onChange={this.handleChange} id="fd2Input" class="form-control form-control-lg" aria-describedby="fd2" placeholder="Forge Disc Name" name="fd2"/>
                       </div>
                     </div>
                     <div className="form-group align-items-center part-row form-row">
-                      <div className="col-4">
+                      <div className="col-4 justify-content-center">
                         <img src={this.state.pt2.img_url} className="partShow" alt="pt2" />
                       </div>
-                      <div className="col-4">
-                        <div className="scrollable-menu">
+                      <div className="col-4 scrollable-menu justify-content-center">
+                        <div className="">
                           {this.returnQueriedMenuList("pt2")}
                         </div>
                       </div>
                       <div className="col-4">
-                        <input value={this.state.pt2Input} onChange={this.handleChange} id="pt2Input" class="form-control" aria-describedby="pt2" placeholder="Performace Tip Name" name="pt2"/>
+                        <input value={this.state.pt2Input} onChange={this.handleChange} id="pt2Input" class="form-control form-control-lg" aria-describedby="pt2" placeholder="Performace Tip Name" name="pt2"/>
                       </div>
                     </div>
                     <p>Attack: {this.state.el2.attack + this.state.fd2.attack + this.state.pt2.attack}&nbsp;
@@ -327,6 +335,7 @@ class App extends Component {
                     Weight: {this.state.el2.weight_stat + this.state.fd2.weight_stat + this.state.pt2.weight_stat}&nbsp;
                     Speed: {this.state.el2.speed + this.state.fd2.speed + this.state.pt2.speed}&nbsp;
                     Burst: {this.state.el2.burst}</p>
+                    <h3>{(this.state.model ? this.state.model.prob[1] : 0)}%</h3>
                   </div>
                 </div>
             </form>
