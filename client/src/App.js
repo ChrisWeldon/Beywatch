@@ -13,7 +13,7 @@ function  nat(val){
 class App extends Component {
   constructor(props){
     super(props);
-    this.api_server = "http://localhost:8080"
+    this.api_server = "http://api.beybladematch.com"
     this.state = {
                     el1:{
                       img_url : ""
@@ -210,7 +210,10 @@ class App extends Component {
   renderPart(pt, q, part){
     fetch('this.api_server/api/part', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
       body: JSON.stringify({part_type:pt, query:q})
     }).then(res => res.json())
     .then(res => {
