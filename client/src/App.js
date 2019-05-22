@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import BarChart from './BarChart';
 
 function  nat(val){
   if(val<0){
@@ -342,6 +343,11 @@ class App extends Component {
                   </div>
                 </div>
             </form>
+            <div className="row">
+              <div clasName="col-md-6">
+                <BarChart data={[nat(this.state.el1.defense),2,3,4,nat(this.state.el1.attack),6]} width={700} height={500}/>
+              </div>
+            </div>
           </div>
         </div>
       </div>
