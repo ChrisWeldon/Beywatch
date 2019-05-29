@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import BarChart from './BarChart';
 
-function  nat(val){
+function nat(val){
   if(val<0){
     return(0)
   }else{
@@ -343,9 +343,12 @@ class App extends Component {
                   </div>
                 </div>
             </form>
-            <div className="row">
-              <div clasName="col-md-6">
-                <BarChart data={[nat(this.state.el1.defense),2,3,4,nat(this.state.el1.attack),6]} width={700} height={500}/>
+            <div className="row justify-content-center">
+              <div clasName="col-md-6 justify-content-center">
+                <BarChart data={[nat(this.state.el1.defense),2,3,4,nat(this.state.el1.attack),6]} width={700} height={100}/>
+              </div>
+              <div clasName="col-md-6 justfy-content-center">
+                <BarChart data={[nat(this.state.el1.defense),2,3,4,nat(this.state.el1.attack),6]} width={700} height={100}/>
               </div>
             </div>
           </div>
