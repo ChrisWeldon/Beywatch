@@ -13,6 +13,7 @@ class BarChart extends Component {
     .attr("height", this.h)
     .style("margin-left", 100);
   }
+
   componentDidMount() {
     this.drawChart();
   }
@@ -32,7 +33,7 @@ class BarChart extends Component {
       .attr("y", (d, i) => this.h - 10 * d)
       .attr("width", 65)
       .attr("height", (d, i) => d * 10)
-      .attr("fill", "blue")
+      .attr("fill", "green")
   }
 
   render(){
