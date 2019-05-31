@@ -1,5 +1,6 @@
 ### Beybladematch.com
-[www.beybladematch.com](www.beybladematch.com)
+[www.beybladematch.com](http://www.beybladematch.com)
+
 This site is designed to find the best Beyblade parts for every Matchup. By measuring the stats determined by Hasbro and comparing to crowd-sourced match data, finding the best Beyblade parts should be relatively simple ...
 
 Python3 was used for pretty much all the data collection and analysis. The database is using MySQL. The Webapp is built with a Node.js backend and a React.js frontend and NGINX proxy.
@@ -21,7 +22,7 @@ This app will be build on 3 main parts:
  - the Database
 
 ## API
-[api.beybladematch.com](api.beybladematch.com)
+
 The backend's main driver is express.js. Pretty much all of the routing after the domain is done in `api/app.js`. I tried to keep all the routing in one place, but for the sake of security I did the base domain routing with NGINX.
 The API is accessed using REST endpoints at [api.beybladematch.com](http://api.beybladematch.com).
 
@@ -35,13 +36,15 @@ Here are some additional calls that I threw in there:
 `api.beybladematch.com/match/` This is when the prediction model is run on the selected parts. The only thing that needs to put in this call is the ID's of the parts. I am trying to make the use of ID's more global throughout the app.
 
 ## CLIENT
-[www.beybladematch.com](www.beybladematch.com)
+[www.beybladematch.com](http://www.beybladematch.com)
+
 The client is a pretty straightforward React.js frontend styled with Bootstrap.js. The prototype works but will need pretty big visual overhaul for the production build.
 
 The landing page consists of 6 form text inputs with an associated scrollable-select input for each text box. As the textbox changes, it calls `api.beybladematch.com/part/` with the filter of whatever is in the textbox.
 
 ## Database
-[pma.beybladematch.com](pma.beybladematch.com)
+[pma.beybladematch.com](http://pma.beybladematch.com)
+
 The Database is run on MySQL with a phpMyAdmin client. This database is designed to be accessible from both the dev server and the production server.
 
 Usually this is a pretty poor idea given that a mistake on the dev server-app could ruin the production data. Also, this code being open source would blast the myql login credentials all over the web. With all this being said, I really did not want to have to setup a dev mysql server every time I worked on a different machine. Also, if I ever brought anyone onto this project, getting them up to speed would be a lot faster with one master mysql server.
